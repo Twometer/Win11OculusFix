@@ -9,7 +9,9 @@ Windows 11 introduced an _optimization_ that limits all programs running in the 
 
 The most widely known solution is to enable the debug console, which opens a window in the server, making it a foreground process and bypassing the optimization.
 
-I found this annoying, since I always had to have the console open. I made this tool, which does a similar thing, but much simpler and without the annoying console window. It injects into the Oculus Server process, and shows a message box, preventing the FPS limit. 
+If your console host is set to _Windows Terminal_ instead of the legacy _conhost_, this workaround will not work. I found this annoying, since I always had to have the console open, and could not use the Windows Terminal.
+
+I made this tool, which does a similar thing, but much simpler and without the annoying console window. It injects into the Oculus Server process, and shows a message box, preventing the FPS limit. 
 
 ### Usage
 
