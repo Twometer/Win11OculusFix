@@ -13,4 +13,6 @@ I found this annoying, since I always had to have the console open. I made this 
 
 ### Usage
 
-Run the `OculusInjector.exe`. A new window (message box) should appear in the taskbar with the Oculus logo. Unminimize it and start playing - the lag should be gone. When you're done playing, you can close the box with the _Ok_ button.
+Download and unpack the zip file from the Releases section, then run the `OculusInjector.exe`. A new window (message box) should appear in the taskbar with the Oculus logo. Bring it to foreground (unminimize it) and start playing - the lag should be gone. When you're done playing, you can close the box with the _Ok_ button.
+
+Unlike the Oculus debug console, it will not leave any window open on your system after you close the message box.
