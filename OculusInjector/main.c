@@ -24,7 +24,29 @@ DWORD FindProcessId(LPCSTR processName) {
     return 0;
 }
 
+BOOL FileExists(LPCTSTR szPath) {
+    DWORD dwAttrib = GetFileAttributes(szPath);
+
+    return (dwAttrib != INVALID_FILE_ATTRIBUTES &&
+            !(dwAttrib & FILE_ATTRIBUTE_DIRECTORY));
+}
+
 int main() {
+    // Find DLL
+    LPCSTR dllName = "OculusLib.dll";
+    CHAR dllPath[256];
+    if (!GetFullPathNameA(dllName, 256, dllPath, NULL)) {
+        printf("error: Failed to resolve library path\n");
+        return 1;
+    }
+
+    if (!FileExists(dllName)) {
+        printf("error: Failed to find library\n");
+        return 1;
+    }
+
+    printf("Found DLL at %s\n", dllPath);
+
     // Find process
     DWORD processId = FindProcessId("OVRServer_x64.exe");
     printf("Injecting into Process ID %lu\n", processId);
@@ -33,7 +55,6 @@ int main() {
     HANDLE hProcess = OpenProcess(PROCESS_ALL_ACCESS, FALSE, processId);
 
     // Write DLL path to target process
-    LPCSTR dllPath = "E:\\GitHub\\Win11OculusFix\\OculusLib\\cmake-build-debug\\OculusLib.dll";
     LPVOID pDllPath = VirtualAllocEx(hProcess, 0, strlen(dllPath) + 1, MEM_COMMIT, PAGE_READWRITE);
     WriteProcessMemory(hProcess, pDllPath, (LPVOID) dllPath, strlen(dllPath) + 1, 0);
 
