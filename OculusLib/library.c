@@ -2,7 +2,7 @@
 
 void ThreadMain(HMODULE hModule) {
     Sleep(100);
-    MessageBox(0, "Don't close this message box", "Oculus Injector", MB_ICONINFORMATION);
+    MessageBox(0, "While this message box is open, the Oculus lag won't occur :-)", "Win11OculusFix", MB_ICONINFORMATION);
     FreeLibraryAndExitThread(hModule, 0);
 }
 
